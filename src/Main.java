@@ -7,14 +7,26 @@ public class Main{
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         Random r = new Random();
+
+        // Char arrays containing the word to be guessed
         char[] brokenDownWord, hiddenWord;
+        // What letter did the user guess
         char guess;
+        // Contains the users guess or powerUpChoice
         String guessOrPowerUp;
-        int numGuesses = 0;
+        // Contains the hint for the current word
+        String hint;
+        // Do the user want to continue playing ?
+        String yesOrNo = 'y';
+        // Contains the random number used to choose a word
+        int chosenWord;
+        // How many guesses it took the user
+        int numGuesses;
+        // Random letter to reveal with the reveal powerUp
         int randomLetter;
         boolean matchFound = false;
-        String yesOrNo = "y";
         boolean powerUpWorked = false;
+
 
         // Welcome the user to the software and prompt them to pick a category
         do {
@@ -42,9 +54,10 @@ public class Main{
             };
 
             // Pick a word from the chosen list and puts it in a char array
-
-            brokenDownWord = words[r.nextInt(words.length)][0].toCharArray();
+            chosenWord = r.nextInt(words.length);
+            brokenDownWord = words[chosenWord][0].toCharArray();
             hiddenWord = new char[brokenDownWord.length];
+            hint = words[chosenWord][1];
             Arrays.fill(hiddenWord, '*');
 
             // Play the game
@@ -82,7 +95,7 @@ public class Main{
                 // Checks if user used powerUp2
                 }else if(guessOrPowerUp.equals("2")){
                     if(powerUp2 == 1){
-                        System.out.println("you used a hint");
+                        System.out.println("Here your hint: "+hint);
                         powerUp2 = 0;
                     }else{
                         System.out.println("You don't have a hint anymore");
