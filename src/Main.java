@@ -16,7 +16,7 @@ public class Main{
         String yesOrNo = "y";
 
         int chosenWord;
-        int numGuesses;1
+        int numGuesses;
 
         int randomLetter;
 
