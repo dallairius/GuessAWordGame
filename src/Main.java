@@ -14,6 +14,8 @@ public class Main{
         String guessOrPowerUp;
         String hint;
         String yesOrNo = "y";
+        String name;
+
         String[][] words;
         String[][] scoreBoard = new String[10][2];
 
@@ -30,7 +32,12 @@ public class Main{
         byte powerUp1,powerUp2;
 
 
-        Arrays.fill(scoreBoard,new String[]{"John Doe", "20"});
+        // Populate the scoreBoard
+        for(int i=0;i< scoreBoard.length;i++){
+            scoreBoard[i][0] = "John Doe";
+            scoreBoard[i][1] = Integer.toString(i+1);
+
+        }
         // Welcome the user to the software and prompt them to pick a category
         do {
             // Resets numGuess in case the user is playing again
@@ -209,15 +216,16 @@ public class Main{
             // End of game message
             System.out.println("Good job ! The word was: " + new String(brokenDownWord));
             System.out.println("You missed " + numGuesses + " times");
-            System.out.println("You want to play again ? y or n");
 
-            // If score is higher than lowest score
-            if(numGuesses >= Integer.parseInt(scoreBoard[9][1])){
-                for(int i=9;i>0;i--){
-                    if(){
 
-                    }
-                }
+            // If score is high enough for leaderboard
+            if(numGuesses <= Integer.parseInt(scoreBoard[9][1])){
+                System.out.println("You got on the leader Board !! Enter your name:");
+                name = input.nextLine();
+                //check scores to see where this one ranks
+                scoreBoard[9][0]=name;
+                scoreBoard[9][1]=Integer.toString(numGuesses);
+                Arrays.sort(scoreBoard,(a,b) -> Integer.compare(Integer.parseInt(a[1]),Integer.parseInt(b[1])));
             }
             System.out.println("Score Board :");
             for (int i=0;i< scoreBoard.length;i++){
@@ -225,6 +233,8 @@ public class Main{
             }
 
             firstFinish = true;
+
+            System.out.println("You want to play again ? y or n");
             yesOrNo = input.nextLine().toLowerCase();
 
             // Resets the whole game if the user wants to play again
