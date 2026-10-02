@@ -68,6 +68,8 @@ public class Main{
             String[][] starTrek = {{"janeway","hint1"}, {"chakotay","hint2"}, {"doctor","heals people"}, {"torres","hint3"}, {"paris","capital of the french"}, {"neelix","netflix spelled poorly"}};
             String[][] drumCorps = {{"bluecoats","The beatles"},{"crown","Good brass"},{"colts","American Drum Corps"},{"crusaders","Good drumline"},{"bluedevils","Doesn't win anymore"},{"spartans","now world class"}};
             String[][] melee = {{"captainfalcon","Show me your moves"},{"foxmccloud","20XX is real"},{"falco","Laser,Laser,Laser"},{"bowser","The koopa king"},{"marth","One trick cheese master"},{"ganondorf","Warlock punch"}};
+            String[][] youtubers = {{"jaiden","purple animations"},{"pewdiepie","bro fist"},{"markiplier","wrote iron lungs"},{"summoningsalt","Speedrun history"},{"wirtual","and then hefest got this run"},{"dakota","spirit"}};
+            String[][] rockBands = {{"captainfalcon","Show me your moves"},{"foxmccloud","20XX is real"},{"falco","Laser,Laser,Laser"},{"bowser","The koopa king"},{"marth","One trick cheese master"},{"ganondorf","Warlock punch"}};
 
 
             // Makes the user pick a category until he picks something valid
