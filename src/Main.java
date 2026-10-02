@@ -14,6 +14,7 @@ public class Main{
         String guessOrPowerUp;
         String hint;
         String yesOrNo = "y";
+        String[][] words;
 
         int chosenWord;
         int numGuesses;
@@ -55,23 +56,43 @@ public class Main{
             String[][] general = {{"enigma","mysterious..."}, {"tranquil","very calm"}, {"vanguard","defender"}, {"flummoxed","What ???"}, {"secret","Shhhhhhh"}, {"practice","how do you get better?"}};
             String[][] lotr = {{"frodo","he carries the weight"}, {"samwise","the real hero"}, {"gondor","the country of men"}, {"balrog","it shall not pass"}, {"mithrandir","elf I think"}, {"mithril","cool metal"}};
             String[][] starTrek = {{"janeway","hint1"}, {"chakotay","hint2"}, {"doctor","heals people"}, {"torres","hint3"}, {"paris","capital of the french"}, {"neelix","netflix spelled poorly"}};
-            String[][] DrumCorps = {{"Bluecoats","The beatles"},{"Crown","Good brass"},{"Colts","American Drum Corps"},{"Crusaders","Good drumline"},{"BlueDevils","Doesn't win anymore"},{"Spartans","now world class"}};
-            String[][] Melee = {{"CaptainFalcon","Show me your moves"},{"FoxMcCloud","20XX is real"},{"Falco","Laser,Laser,Laser"},{"Bowser","The koopa king"},{"Marth","One trick cheese master"},{"Ganondorf","Warlock punch"}};
+            String[][] drumCorps = {{"Bluecoats","The beatles"},{"Crown","Good brass"},{"Colts","American Drum Corps"},{"Crusaders","Good drumline"},{"BlueDevils","Doesn't win anymore"},{"Spartans","now world class"}};
+            String[][] melee = {{"CaptainFalcon","Show me your moves"},{"FoxMcCloud","20XX is real"},{"Falco","Laser,Laser,Laser"},{"Bowser","The koopa king"},{"Marth","One trick cheese master"},{"Ganondorf","Warlock punch"}};
 
             // What category the user picks gets put in the "words" array
             choice = input.nextByte();
             input.nextLine();
 
-            String[][] words = switch (choice) {
+            words = null;
+            while(words == null)
+            switch (choice) {
 
-                case 1 -> general;
-                case 2 -> lotr;
-                case 3 -> starTrek;
-                case 4 -> DrumCorps;
-                case 5 -> Melee;
-                default -> general;
+                case 1: words = general; break;
+                case 2: words = lotr; break;
+                case 3: words = starTrek; break;
+                case 4:
+                    if(firstFinish){
+                        words = drumCorps;
+                    }else{
+                        words = null;
+                        System.out.println("Finish the game to unlock");
+                    }
+                    break;
+
+                case 5:
+                    if(firstFinish){
+                    words = melee;
+                    }else{
+                        words = null;
+                        System.out.println("Finish the game to unlock");
+                    }
+                    break;
+
+                default: words =  general; break;
 
             };
+
+
 
             // Picks a random word in the list and puts it in an array and saves the hint
             chosenWord = r.nextInt(words.length);
