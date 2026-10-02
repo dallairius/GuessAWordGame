@@ -22,6 +22,7 @@ public class Main{
 
         boolean matchFound = false;
         boolean powerUpWorked = false;
+        boolean firstFinish = false;
 
         byte choice;
         byte powerUp1,powerUp2;
@@ -32,16 +33,30 @@ public class Main{
             // Resets numGuess in case the user is playing again
             numGuesses = 0;
 
-            System.out.println("Welcome to the word guessing game :)\n" +
-                    "Please select a topic \n" +
-                    "1. General\n" +
-                    "2. Lord of the Rings\n" +
-                    "3. Star Trek");
+            if(firstFinish) {
+                System.out.println("Welcome to the word guessing game :)\n" +
+                        "Please select a topic \n" +
+                        "1. General\n" +
+                        "2. Lord of the Rings\n" +
+                        "3. Star Trek\n" +
+                        "4. Drum Corps (Locked)\n" +
+                        "5. Smash Brothers Melee (Locked)\n");
+            }else{
+                System.out.println("Welcome to the word guessing game :)\n" +
+                        "Please select a topic \n" +
+                        "1. General\n" +
+                        "2. Lord of the Rings\n" +
+                        "3. Star Trek\n" +
+                        "4. Drum Corps\n" +
+                        "5. Smash Brothers Melee\n");
+            }
 
             // Threes different categories to pick from with associated hints for each word
             String[][] general = {{"enigma","mysterious..."}, {"tranquil","very calm"}, {"vanguard","defender"}, {"flummoxed","What ???"}, {"secret","Shhhhhhh"}, {"practice","how do you get better?"}};
             String[][] lotr = {{"frodo","he carries the weight"}, {"samwise","the real hero"}, {"gondor","the country of men"}, {"balrog","it shall not pass"}, {"mithrandir","elf I think"}, {"mithril","cool metal"}};
             String[][] starTrek = {{"janeway","hint1"}, {"chakotay","hint2"}, {"doctor","heals people"}, {"torres","hint3"}, {"paris","capital of the french"}, {"neelix","netflix spelled poorly"}};
+            String[][] DrumCorps = {{"Bluecoats","The beatles"},{"Crown","Good brass"},{"Colts","American Drum Corps"},{"Crusaders","Good drumline"},{"BlueDevils","Doesn't win anymore"},{"Spartans","now world class"}};
+            String[][] Melee = {{"CaptainFalcon","Show me your moves"},{"FoxMcCloud","20XX is real"},{"Falco","Laser,Laser,Laser"},{"Bowser","The koopa king"},{"Marth","One trick cheese master"},{"Ganondorf","Warlock punch"}};
 
             // What category the user picks gets put in the "words" array
             choice = input.nextByte();
@@ -51,7 +66,10 @@ public class Main{
 
                 case 1 -> general;
                 case 2 -> lotr;
-                default -> starTrek;
+                case 3 -> starTrek;
+                case 4 -> DrumCorps;
+                case 5 -> Melee;
+                default -> general;
 
             };
 
@@ -159,6 +177,8 @@ public class Main{
             System.out.println("Good job ! The word was: " + new String(brokenDownWord));
             System.out.println("You missed " + numGuesses + " times");
             System.out.println("You want to play again ? y or n");
+
+            firstFinish = true;
             yesOrNo = input.nextLine().toLowerCase();
 
             // Resets the whole game if the user wants to play again
