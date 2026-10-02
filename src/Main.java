@@ -15,6 +15,7 @@ public class Main{
         String hint;
         String yesOrNo = "y";
         String[][] words;
+        String[][] scoreBoard = new String[10][2];
 
         int chosenWord;
         int numGuesses;
@@ -29,6 +30,7 @@ public class Main{
         byte powerUp1,powerUp2;
 
 
+        Arrays.fill(scoreBoard,new String[]{"John Doe", "20"});
         // Welcome the user to the software and prompt them to pick a category
         do {
             // Resets numGuess in case the user is playing again
@@ -142,7 +144,7 @@ public class Main{
                     if(powerUp1 == 1){
                         System.out.println("You revealed a random letter");
 
-                        powerUp1 = 0;
+                        //powerUp1 = 0;
                         // This is used to keep the user in the next loop until the reveal has worked
                         powerUpWorked = false;
 
@@ -208,6 +210,19 @@ public class Main{
             System.out.println("Good job ! The word was: " + new String(brokenDownWord));
             System.out.println("You missed " + numGuesses + " times");
             System.out.println("You want to play again ? y or n");
+
+            // If score is higher than lowest score
+            if(numGuesses >= Integer.parseInt(scoreBoard[9][1])){
+                for(int i=9;i>0;i--){
+                    if(){
+
+                    }
+                }
+            }
+            System.out.println("Score Board :");
+            for (int i=0;i< scoreBoard.length;i++){
+                System.out.println((i+1)+". "+scoreBoard[i][0]+": "+scoreBoard[i][1]);
+            }
 
             firstFinish = true;
             yesOrNo = input.nextLine().toLowerCase();
