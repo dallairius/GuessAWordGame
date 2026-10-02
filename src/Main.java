@@ -40,57 +40,67 @@ public class Main{
                         "1. General\n" +
                         "2. Lord of the Rings\n" +
                         "3. Star Trek\n" +
-                        "4. Drum Corps (Locked)\n" +
-                        "5. Smash Brothers Melee (Locked)\n");
+                        "4. Drum Corps\n" +
+                        "5. Smash Brothers Melee\n");
             }else{
                 System.out.println("Welcome to the word guessing game :)\n" +
                         "Please select a topic \n" +
                         "1. General\n" +
                         "2. Lord of the Rings\n" +
                         "3. Star Trek\n" +
-                        "4. Drum Corps\n" +
-                        "5. Smash Brothers Melee\n");
+                        "4. Drum Corps (Locked)\n" +
+                        "5. Smash Brothers Melee (Locked)\n");
             }
 
             // Threes different categories to pick from with associated hints for each word
             String[][] general = {{"enigma","mysterious..."}, {"tranquil","very calm"}, {"vanguard","defender"}, {"flummoxed","What ???"}, {"secret","Shhhhhhh"}, {"practice","how do you get better?"}};
             String[][] lotr = {{"frodo","he carries the weight"}, {"samwise","the real hero"}, {"gondor","the country of men"}, {"balrog","it shall not pass"}, {"mithrandir","elf I think"}, {"mithril","cool metal"}};
             String[][] starTrek = {{"janeway","hint1"}, {"chakotay","hint2"}, {"doctor","heals people"}, {"torres","hint3"}, {"paris","capital of the french"}, {"neelix","netflix spelled poorly"}};
-            String[][] drumCorps = {{"Bluecoats","The beatles"},{"Crown","Good brass"},{"Colts","American Drum Corps"},{"Crusaders","Good drumline"},{"BlueDevils","Doesn't win anymore"},{"Spartans","now world class"}};
-            String[][] melee = {{"CaptainFalcon","Show me your moves"},{"FoxMcCloud","20XX is real"},{"Falco","Laser,Laser,Laser"},{"Bowser","The koopa king"},{"Marth","One trick cheese master"},{"Ganondorf","Warlock punch"}};
+            String[][] drumCorps = {{"bluecoats","The beatles"},{"crown","Good brass"},{"colts","American Drum Corps"},{"crusaders","Good drumline"},{"bluedevils","Doesn't win anymore"},{"spartans","now world class"}};
+            String[][] melee = {{"captainfalcon","Show me your moves"},{"foxmccloud","20XX is real"},{"falco","Laser,Laser,Laser"},{"bowser","The koopa king"},{"marth","One trick cheese master"},{"ganondorf","Warlock punch"}};
 
-            // What category the user picks gets put in the "words" array
-            choice = input.nextByte();
-            input.nextLine();
 
+            // Makes the user pick a category until he picks something valid
             words = null;
-            while(words == null)
-            switch (choice) {
+            while(words == null) {
+                choice = input.nextByte();
+                input.nextLine();
+                switch (choice) {
 
-                case 1: words = general; break;
-                case 2: words = lotr; break;
-                case 3: words = starTrek; break;
-                case 4:
-                    if(firstFinish){
-                        words = drumCorps;
-                    }else{
-                        words = null;
-                        System.out.println("Finish the game to unlock");
-                    }
-                    break;
+                    case 1:
+                        words = general;
+                        break;
+                    case 2:
+                        words = lotr;
+                        break;
+                    case 3:
+                        words = starTrek;
+                        break;
+                    case 4:
+                        if (firstFinish) {
+                            words = drumCorps;
+                        } else {
+                            words = null;
+                            System.out.println("Finish the game to unlock");
+                        }
+                        break;
 
-                case 5:
-                    if(firstFinish){
-                    words = melee;
-                    }else{
-                        words = null;
-                        System.out.println("Finish the game to unlock");
-                    }
-                    break;
+                    case 5:
+                        if (firstFinish) {
+                            words = melee;
+                        } else {
+                            words = null;
+                            System.out.println("Finish the game to unlock");
+                        }
+                        break;
 
-                default: words =  general; break;
+                    default:
+                        words = general;
+                        break;
 
-            };
+                }
+                ;
+            }
 
 
 
