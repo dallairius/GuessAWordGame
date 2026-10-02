@@ -43,6 +43,7 @@ public class Main{
             // Resets numGuess in case the user is playing again
             numGuesses = 0;
 
+            // If the player has played already, last 2 categories are unlocked
             if(firstFinish) {
                 System.out.println("Welcome to the word guessing game :)\n" +
                         "Please select a topic \n" +
@@ -151,7 +152,7 @@ public class Main{
                     if(powerUp1 == 1){
                         System.out.println("You revealed a random letter");
 
-                        //powerUp1 = 0;
+                        powerUp1 = 0;
                         // This is used to keep the user in the next loop until the reveal has worked
                         powerUpWorked = false;
 
@@ -218,20 +219,26 @@ public class Main{
             System.out.println("You missed " + numGuesses + " times");
 
 
-            // If score is high enough for leaderboard
+            // Add your name if score is high enough for leaderboard
             if(numGuesses <= Integer.parseInt(scoreBoard[9][1])){
                 System.out.println("You got on the leader Board !! Enter your name:");
                 name = input.nextLine();
-                //check scores to see where this one ranks
+
+                // overwrites the last entry
                 scoreBoard[9][0]=name;
                 scoreBoard[9][1]=Integer.toString(numGuesses);
+
+                // Sort the array to put the new score in the correct rank
                 Arrays.sort(scoreBoard,(a,b) -> Integer.compare(Integer.parseInt(a[1]),Integer.parseInt(b[1])));
             }
+
+            // Prints the scoreBoard
             System.out.println("Score Board :");
             for (int i=0;i< scoreBoard.length;i++){
                 System.out.println((i+1)+". "+scoreBoard[i][0]+": "+scoreBoard[i][1]);
             }
 
+            // Unlocks 2 new categories
             firstFinish = true;
 
             System.out.println("You want to play again ? y or n");
