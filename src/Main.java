@@ -50,26 +50,30 @@ public class Main{
                         "1. General\n" +
                         "2. Lord of the Rings\n" +
                         "3. Star Trek\n" +
-                        "4. Drum Corps\n" +
-                        "5. Smash Brothers Melee\n");
+                        "4. Youtubers\n" +
+                        "5. Rock Bands\n" +
+                        "6. Drum Corps\n" +
+                        "7. Smash Brothers Melee\n");
             }else{
                 System.out.println("Welcome to the word guessing game :)\n" +
                         "Please select a topic \n" +
                         "1. General\n" +
                         "2. Lord of the Rings\n" +
                         "3. Star Trek\n" +
-                        "4. Drum Corps (Locked)\n" +
-                        "5. Smash Brothers Melee (Locked)\n");
+                        "4. Youtubers\n" +
+                        "5. Rock Bands\n" +
+                        "6. Drum Corps (Locked)\n" +
+                        "7. Smash Brothers Melee (Locked)\n");
             }
 
             // Threes different categories to pick from with associated hints for each word
             String[][] general = {{"enigma","mysterious..."}, {"tranquil","very calm"}, {"vanguard","defender"}, {"flummoxed","What ???"}, {"secret","Shhhhhhh"}, {"practice","how do you get better?"}};
             String[][] lotr = {{"frodo","he carries the weight"}, {"samwise","the real hero"}, {"gondor","the country of men"}, {"balrog","it shall not pass"}, {"mithrandir","elf I think"}, {"mithril","cool metal"}};
             String[][] starTrek = {{"janeway","hint1"}, {"chakotay","hint2"}, {"doctor","heals people"}, {"torres","hint3"}, {"paris","capital of the french"}, {"neelix","netflix spelled poorly"}};
+            String[][] youtubers = {{"jaiden","purple animations"},{"pewdiepie","bro fist"},{"markiplier","wrote iron lungs"},{"summoningsalt","Speedrun history"},{"wirtual","and then hefest got this run"},{"dakota","spirit"}};
+            String[][] rockBands = {{"megadeth","A tout le monde"},{"tenaciousd","Tribute"},{"metallica","bad drummer"},{"ironmaiden","run to the hills"},{"avengedsevenfold","nightmare"},{"rush","2112"}};
             String[][] drumCorps = {{"bluecoats","The beatles"},{"crown","Good brass"},{"colts","American Drum Corps"},{"crusaders","Good drumline"},{"bluedevils","Doesn't win anymore"},{"spartans","now world class"}};
             String[][] melee = {{"captainfalcon","Show me your moves"},{"foxmccloud","20XX is real"},{"falco","Laser,Laser,Laser"},{"bowser","The koopa king"},{"marth","One trick cheese master"},{"ganondorf","Warlock punch"}};
-            String[][] youtubers = {{"jaiden","purple animations"},{"pewdiepie","bro fist"},{"markiplier","wrote iron lungs"},{"summoningsalt","Speedrun history"},{"wirtual","and then hefest got this run"},{"dakota","spirit"}};
-            String[][] rockBands = {{"captainfalcon","Show me your moves"},{"foxmccloud","20XX is real"},{"falco","Laser,Laser,Laser"},{"bowser","The koopa king"},{"marth","One trick cheese master"},{"ganondorf","Warlock punch"}};
 
 
             // Makes the user pick a category until he picks something valid
@@ -89,6 +93,12 @@ public class Main{
                         words = starTrek;
                         break;
                     case 4:
+                        words = youtubers;
+                        break;
+                    case 5:
+                        words = rockBands;
+                        break;
+                    case 6:
                         if (firstFinish) {
                             words = drumCorps;
                         } else {
@@ -97,7 +107,7 @@ public class Main{
                         }
                         break;
 
-                    case 5:
+                    case 7:
                         if (firstFinish) {
                             words = melee;
                         } else {
